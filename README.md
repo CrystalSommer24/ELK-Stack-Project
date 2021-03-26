@@ -55,13 +55,13 @@ Machines within the network can only be accessed by Jump-Box.
 
 A summary of the access policies in place can be found in the table below.
 
-|   Name   |     Function     | IP Address |   Operating System   |
-|:--------:|:----------------:|:----------:|:--------------------:|
-| Jump-box |      Gateway     |  10.0.0.4  | Linux - Ubuntu 18.04 |
-|   Web-1  |    Web Server    |  10.0.0.5  | Linux - Ubuntu 18.04 |
-|   Web-2  |    Web Server    |  10.0.0.6  | Linux - Ubuntu 18.04 |
-|   Web-3  |    Web Server    |  10.0.0.7  | Linux - Ubuntu 18.04 |
-|    Jyn   | Monitoring (ELK) |  10.1.0.4  | Linux - Ubuntu 18.04 |
+|   Name   | Publicly Accessible |  Allowed IP Addresses |
+|:--------:|:-------------------:|:---------------------:|
+| Jump-Box |          No         |       Admin's IP      |
+|   Web-1  |          No         |        10.0.0.4       |
+|   Web-2  |          No         |        10.0.0.4       |
+|   Web-3  |          No         |        10.0.0.4       |
+|    Jyn   |          No         | 10.0.0.4 & Admin's IP |
 
 ### Elk Configuration
 
