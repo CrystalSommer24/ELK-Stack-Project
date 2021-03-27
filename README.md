@@ -152,7 +152,8 @@ Copy the **[filebeat-config.yml](/Ansible/filebeat-config.yml)** to /etc/ansible
 To edit the filebeat-config.yml file run:
 
    `nano /etc/ansible filebeat-config.yml`
-- Use Ctrl + w to move to line #1106 then replace the IP address with your ELK machines IP
+- Use Ctrl + w to move to line #1106
+- Replace the IP address shown with your ELK machines IP
 - Move to line #1806 and insert your ELK IP address there as well
 
 To run the playbook use: 
@@ -172,7 +173,8 @@ Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ans
 To edit the metricbeat-config.yml file run:
 
    `nano /etc/ansible metricbeat-config.yml`
-- Use Ctrl + w to move to line #62 then replace the IP address with your ELK machines IP
+- Use Ctrl + w to move to line #62
+- Replace the IP address shown with your ELK machines IP
 - Move to line #94 and insert your ELK IP address there as well
 
 To run the playbook use: 
