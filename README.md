@@ -111,9 +111,9 @@ The IP address should be followed by:
 
 ansible_python_interpreter=/usr/bin/python3   (be sure there is a space between this and the IP)
 
-Example:  
-/etc/ansible/hosts
+Example:
 
+/etc/ansible/hosts
 ```[webservers]
 
 10.0.0.4 ansible_python_interpreter=/usr/bin/python3
@@ -159,7 +159,7 @@ To run the playbook use:
 
    `ansible-playbook filebeat-playbook.yml`
 
-- Navigate to http://<ELK.VM.External.IP>:5601/app/kibana and check that the playbook ran successfully. You can search for filebeat-* in the Dashboard
+- To check that the playbook ran successfully navigate to http://<ELK.VM.External.IP>:5601/app/kibana. You can search for filebeat-* in the Dashboard
 
 If it was successful you should see similar results to those shown here: [Filebeat Kibana Dahsboard](/Images/Filebeat_kb_SS.png)
 
@@ -179,7 +179,7 @@ To run the playbook use:
 
    `ansible-playbook metricbeat-playbook.yml`
 
-- Navigate to http://<ELK.VM.External.IP>:5601/app/kibana and check that the playbook ran successfully. You can search for metricbeat-* in the Dashboard
+- To check that the playbook ran successfully navigate to http://<ELK.VM.External.IP>:5601/app/kibana. You can search for metricbeat-* in the Dashboard
 
 If it was successful you should see similar results to those shown here: [Metricbeat Kibana Dashboard](/Images/Metricbeat_kb_SS.png)
 
