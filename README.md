@@ -162,7 +162,7 @@ To run the playbook use:
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana and check that the playbook ran successfully. You can search for filebeat-* in the Dashboard
 
 If it was successful you should see similar results to those shown below:
-![image](/Images/Filebeat_kb_SS.PNG)
+![image](/Images/Filebeat_kb_SS.png)
 
 To run the Metricbeat Playbook:
 
@@ -183,6 +183,6 @@ To run the playbook use:
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana and check that the playbook ran successfully. You can search for metricbeat-* in the Dashboard
 
 If it was successful you should see similar results to those shown below:
-![image](/Images/Metricbeat_kb_SS.PNG)
+![image](/Images/Metricbeat_kb_SS.png)
 
 
