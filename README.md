@@ -127,8 +127,14 @@ Example:
  10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
 Now that the /etc/ansible/hosts file has been updated the playbook can be run. Use the command:
- - ansible-playbook install-elk.yml 
--After running the playbook SSH from your Ansible container to the ELK machine and run the docker ps command to check that seb/elk:761 is running.
+ - ansible-playbook install-elk.yml
+ 
+After running the playbook SSH from your Ansible container to the ELK machine.
+
+From there run the following command to check that seb/elk:761 is running.
+- docker ps 
+- The result should be similar to the image below
+- ![image](Images/docker_ps_ss.PNG)
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. 
 
 To run Filebeat Playbook:
