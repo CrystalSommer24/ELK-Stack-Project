@@ -95,6 +95,43 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below: [.yml Playbook](/Ansible)
 
+To install ELK:
+
+Copy the [install-elk.yml](/Ansible) file to /etc/ansible/roles
+Add the new VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. Use the following command to edit the file
+- nano /etc/ansible/hosts
+Update the file so that the new VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet add it under the [webservers] group.
+The IP address should be followed by: 
+
+ansible_python_interpreter=/usr/bin/python3 
+
+Example: 
+
+# /etc/ansible/hosts
+ [webservers]
+ 10.0.0.4 ansible_python_interpreter=/usr/bin/python3
+ 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+ 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+
+ [elk]
+ 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+
+Now that the /etc/ansible/hosts file has been updated the playbook is ready to be run. Use the command:
+ - ansible-playbook install-elk.yml 
+- After running the playbook SSH from your Ansible container to the ELK machine and run the docker ps command to check that seb/elk:761 is running.
+- Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. 
+
+To run Filebeat Playbook:
+
+- Edit the [filebeat-config.yml](/Ansible) file in /etc/ansible
+- nano /etc/ansible filebeat-config.yml
+- Use Ctrl + w to move to line #1106 then replace the IP address with your ELK machines IP
+- Move to line #1806 and insert your ELK IP address there as well
+- Use the command ansible-playbook filebeat-playbook.yml to run the playbook
+- Navigate to the Filebeat installation page
+
+To run Metricbeat Playbook:
+- Edit the [metricbeat-config.yml](/Ansible)
 
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
