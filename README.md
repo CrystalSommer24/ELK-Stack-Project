@@ -26,9 +26,9 @@ Load balancing ensures that the application will be highly available, in additio
 
 - The Jump-box is used to create a controlled access point that is only avaiable to system administrators which allows them to access the network while keeping it hidden from the public.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems and system metrics.
-- Filebeat is utilized to monitor log files. Its creators describe it as being used for "forwarding and centralizing log data." Once that data has been collected it can then be parsed and visualized for easy interpretation.
-- Metricbeat is useful in capturing system and service statistics. It periodically collects metrics from the OS and active services on the server to help users keep track of the system’s workings whether it be CPU, memory, or applications.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to systems logs and metrics.
+- Filebeat is utilized to monitor log files and log events. 
+- Metricbeat collects metrics from the OS and active services running on the server.  
 
 The configuration details of each machine may be found below:
 
