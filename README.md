@@ -170,7 +170,7 @@ Copy the **[metricbeat-playbook.yml](/Ansible/metricbeat-playbook.yml)** to /etc
 
 Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ansible
 
-The metricbeat-config.yml needs to be edited with your ELk machines IP address. To do that run the following command:
+The metricbeat-config.yml needs to be edited with your ELK machines IP address. To do that run the following command:
 
    `nano /etc/ansible metricbeat-config.yml`
 - Use Ctrl + w to move to line #62
