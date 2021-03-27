@@ -93,17 +93,18 @@ These Beats allow us to collect the following information from each machine:
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below: [.yml Playbook](/Ansible)
+SSH into the control node and follow the steps below:
 
 To install ELK:
 
 Copy the [install-elk.yml](/Ansible) file to /etc/ansible/roles
 
 Add the new VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
--Use the following command to edit the file
+
+Use the following command to edit the file:
 - nano /etc/ansible/hosts
 
-Update the file so that the new VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet add it under the [webservers] group.
+Update the file so that the new VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet, add it under the [webservers] group.
 
 The IP address should be followed by: 
 
@@ -111,7 +112,7 @@ ansible_python_interpreter=/usr/bin/python3
 
 Example: 
 
-###/etc/ansible/hosts
+/etc/ansible/hosts
 
 [webservers]
 
@@ -119,15 +120,15 @@ Example:
 
 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
 
-10..0.0.6 ansible_python_interpreter=/usr/bin/python3
+10.0.0.6 ansible_python_interpreter=/usr/bin/python3
 
  [elk]
  
  10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
-Now that the /etc/ansible/hosts file has been updated the playbook is ready to be run. Use the command:
+Now that the /etc/ansible/hosts file has been updated the playbook can be run. Use the command:
  - ansible-playbook install-elk.yml 
-- After running the playbook SSH from your Ansible container to the ELK machine and run the docker ps command to check that seb/elk:761 is running.
+-After running the playbook SSH from your Ansible container to the ELK machine and run the docker ps command to check that seb/elk:761 is running.
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. 
 
 To run Filebeat Playbook:
