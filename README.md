@@ -6,7 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  - [.yml_Playbooks](/Ansible)
+  - **[.yml_Playbooks](/Ansible)**
 
 This document contains the following details:
 - Description of the Topology
@@ -49,7 +49,7 @@ Only the Jump-Box machine can accept connections from the Internet. Access to th
 
 The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its internal IP address of 10.0.0.4. 
 
-A summary of the access policies in place can be found in the table below.
+A summary of the access policies in place can be found in the table below:
 
 |   Name   | Publicly Accessible |  Allowed IP Addresses |
 |:--------:|:-------------------:|:---------------------:|
@@ -63,7 +63,7 @@ A summary of the access policies in place can be found in the table below.
 
 Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because automation not only reduces the chance of errors but also allows multiple machines to be configured at once which is vastly more efficient than manually configuring each machine individually. In addition, the existing files are easy to edit should changes or updates need to be made in the future. 
 
-The playbook implements the following tasks: [.yml_Playbook](/Ansible)
+The playbook implements the following tasks:  **[.yml_Playbook](/Ansible)**
 
 - Install docker.io
 - Install python-3-pip
@@ -91,28 +91,27 @@ These Beats allow us to collect the following information from each machine:
 - Metricbeat functions much like Filebeat but instead of log files, Metricbeat ships host metrics such as CPU usage and memory statistics. In environments using containers, Metricbeat can also be used to measure container performance metrics. 
 
 ### **Using the Playbook**
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+To use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
 
 **To install ELK:**
 
-Copy the [install-elk.yml](/Ansible) file to /etc/ansible/roles
+Copy the **[install-elk.yml](/Ansible)** file to /etc/ansible/roles
 
 Add your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
 
 Use the following command to edit the file:
 
- `nano /etc/ansible/hosts`
+   `nano /etc/ansible/hosts`
 
 Update the file so that your VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet, add it under the [webservers] group.
 
 The IP address should be followed by: 
 
-ansible_python_interpreter=/usr/bin/python3 (be sure there is a space between this and the IP)
+ansible_python_interpreter=/usr/bin/python3   (be sure there is a space between this and the IP)
 
-Example: 
-
+Example:  
 /etc/ansible/hosts
 
 ```[webservers]
@@ -127,19 +126,19 @@ Example:
  
  10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 ```
-Now that the /etc/ansible/hosts file has been updated the playbook can be run. 
+Now that the /etc/ansible/hosts file has been updated you can run the playbook. 
 
 Use the command:
 
-  `ansible-playbook install-elk.yml`
+   `ansible-playbook install-elk.yml`
  
 After running the playbook, SSH from your Ansible container to the ELK machine.
 
 From there run the following command to check that seb/elk:761 is running.
 
- `docker ps` 
+   `docker ps` 
 
-- The result should be similar to the image below:
+The result should be similar to the image below:
 
  ![image](Images/docker_ps_ss.PNG)
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. 
@@ -148,17 +147,17 @@ From there run the following command to check that seb/elk:761 is running.
 
 Copy the **[filebeat-playbook.yml](/Ansible)** to /etc/ansible/roles
 
-Copy the [filebeat-config.yml](/Ansible) to /etc/ansible/
+Copy the **[filebeat-config.yml](/Ansible)** to /etc/ansible/
 
 To edit the filebeat-config.yml file run:
 
-`nano /etc/ansible filebeat-config.yml`
+   `nano /etc/ansible filebeat-config.yml`
 - Use Ctrl + w to move to line #1106 then replace the IP address with your ELK machines IP
 - Move to line #1806 and insert your ELK IP address there as well
 
 To run the playbook use: 
 
-`ansible-playbook filebeat-playbook.yml`
+   `ansible-playbook filebeat-playbook.yml`
 
 - Navigate to the Filebeat installation page to check that the playbook ran successfully
 
@@ -167,24 +166,23 @@ If it was successful you should see similar results to those shown below:
 
 To run the Metricbeat Playbook:
 
-Copy the [metricbeat-playbook.yml](/Ansible) to /etc/ansible/roles
+Copy the **[metricbeat-playbook.yml](/Ansible)** to /etc/ansible/roles
 
-Copy the [metricbeat-config.yml](/Ansible) to /etc/ansible
+Copy the **[metricbeat-config.yml](/Ansible)** to /etc/ansible
 
 To edit the metricbeat-config.yml file run:
 
- `nano /etc/ansible metricbeat-config.yml`
+   `nano /etc/ansible metricbeat-config.yml`
 - Use Ctrl + w to move to line #62 then replace the IP address with your ELK machines IP
 - Move to line #94 and insert your ELK IP address there as well
 
 To run the playbook use: 
 
- `ansible-playbook metricbeat-playbook.yml`
+   `ansible-playbook metricbeat-playbook.yml`
 
 - Navigate to the Metricbeat installation page- Navigate to the Filebeat installation page to check that the playbook ran successfully
 
 If it was successful you should see similar results to those shown below:
 ![image](/Imagaes/Metricbeat_kb_SS.PNG)
-
 
 
