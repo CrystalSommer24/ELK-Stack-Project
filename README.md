@@ -98,22 +98,31 @@ SSH into the control node and follow the steps below: [.yml Playbook](/Ansible)
 To install ELK:
 
 Copy the [install-elk.yml](/Ansible) file to /etc/ansible/roles
-Add the new VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. Use the following command to edit the file
+
+Add the new VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
+-Use the following command to edit the file
 - nano /etc/ansible/hosts
+
 Update the file so that the new VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet add it under the [webservers] group.
+
 The IP address should be followed by: 
 
 ansible_python_interpreter=/usr/bin/python3 
 
 Example: 
 
-# /etc/ansible/hosts
- [webservers]
- 10.0.0.4 ansible_python_interpreter=/usr/bin/python3
- 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
- 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+###/etc/ansible/hosts
+
+[webservers]
+
+10.0.0.4 ansible_python_interpreter=/usr/bin/python3
+
+10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+
+10..0.0.6 ansible_python_interpreter=/usr/bin/python3
 
  [elk]
+ 
  10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
 Now that the /etc/ansible/hosts file has been updated the playbook is ready to be run. Use the command:
