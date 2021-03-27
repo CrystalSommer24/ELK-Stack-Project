@@ -21,7 +21,7 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly available, in addition to restricting incoming access to the network. 
+Load balancing ensures that the application will be highly available, in addition to restricting incoming traffic to the network. 
 - Load Balancers can prevent DDoS attacks by managing the flow of traffic ensuring that servers don’t get overwhelmed. 
 
 - The Jump-box is used to create a controlled access point that is only avaiable to system administrators which allows them to access the network while keeping it hidden from the public.
@@ -34,7 +34,7 @@ The configuration details of each machine may be found below:
 
 |   Name   |     Function     | IP Address |   Operating System   |
 |:--------:|:----------------:|:----------:|:--------------------:|
-| Jump-box |      Gateway     |  10.0.0.4  | Linux - Ubuntu 18.04 |
+| Jump-Box |      Gateway     |  10.0.0.4  | Linux - Ubuntu 18.04 |
 |   Web-1  |    Web Server    |  10.0.0.5  | Linux - Ubuntu 18.04 |
 |   Web-2  |    Web Server    |  10.0.0.6  | Linux - Ubuntu 18.04 |
 |   Web-3  |    Web Server    |  10.0.0.7  | Linux - Ubuntu 18.04 |
@@ -44,7 +44,7 @@ The configuration details of each machine may be found below:
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address:
 - Administrator’s IP address
 
 - The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its interanl IP address of 10.0.0.4. 
@@ -64,6 +64,7 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because automation not only reduces the chance of errors but also allows multiple machines to be configured at once which is vastly more efficient than manually configuring each machine individually. In addition, the existing files are easy to edit should changes or updates need to be made in the future. 
 
 The playbook implements the following tasks:
+
 - Install docker.io
 - Install python-3-pip
 - Install Docker module
@@ -77,7 +78,9 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- 10.0.0.5, 10.0.0.6, 10.0.0.7
+- Web-1 10.0.0.5
+- Web-2 10.0.0.6
+- Web-3 10.0.0.7
 
 We have installed the following Beats on these machines:
 - Filebeat
@@ -91,8 +94,18 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
+- Copy the [.yml](/Ansible) file to /etc/ansible
+- Update /etc/hosts to enable the playbook to run on the correct machines run the following commands:
+  - sudo /etc/hosts
+  - sudo nano hosts
+- Make the following changes to the hosts file
+  - [webservers]
+  - 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+  - 10.0.0.6 ansible_python_interpreter=/usr/bin/python3 
+  - 10.0.0.7 ansible_python_interpreter=/usr/bin/python3 
+  - [elk]
+  - 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+-  
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
