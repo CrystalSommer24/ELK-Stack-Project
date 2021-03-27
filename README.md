@@ -99,7 +99,7 @@ SSH into the control node and follow the steps below:
 
 - Copy the **[install-elk.yml](/Ansible/install-elk.yml)** file to /etc/ansible/roles
 
-- Add your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
+- Add the IP address of your machine to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
 
 - Use the following command to edit the file:
 
