@@ -135,9 +135,9 @@ After running the playbook SSH from your Ansible container to the ELK machine.
 
 From there run the following command to check that seb/elk:761 is running.
 - docker ps 
-- The result should be similar to the image below
+- The result should be similar to the image below:
 
-- ![image](Images/docker_ps_ss.PNG)
+ ![image](Images/docker_ps_ss.PNG)
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. 
 
 To run Filebeat Playbook:
