@@ -63,7 +63,7 @@ A summary of the access policies in place can be found in the table below:
 
 Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because automation not only reduces the chance of errors but also allows multiple machines to be configured at once which is vastly more efficient than manually configuring each machine individually. In addition, the existing files are easy to edit should changes or updates need to be made in the future. 
 
-The playbook implements the following tasks:  **[.yml_Playbook](/Ansible)**
+The playbook implements the following tasks:  **[.yml_Playbook](/Ansible/install-elk.yml)**
 
 - Install docker.io
 - Install python-3-pip
@@ -97,7 +97,7 @@ SSH into the control node and follow the steps below:
 
 **To install ELK:**
 
-Copy the **[install-elk.yml](/Ansible)** file to /etc/ansible/roles
+Copy the **[install-elk.yml](/Ansible/install-elk.yml)** file to /etc/ansible/roles
 
 Add your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
 
@@ -145,9 +145,9 @@ The result should be similar to the image below:
 
 ***To run the Filebeat Playbook:***
 
-Copy the **[filebeat-playbook.yml](/Ansible)** to /etc/ansible/roles
+Copy the **[filebeat-playbook.yml](/Ansible/filebeat-playbook.yml)** to /etc/ansible/roles
 
-Copy the **[filebeat-config.yml](/Ansible)** to /etc/ansible/
+Copy the **[filebeat-config.yml](/Ansible/filebeat-config.yml)** to /etc/ansible/
 
 To edit the filebeat-config.yml file run:
 
@@ -165,7 +165,7 @@ If it was successful you should see similar results to those shown here: [Filebe
 
 To run the Metricbeat Playbook:
 
-Copy the **[metricbeat-playbook.yml](/Ansible)** to /etc/ansible/roles
+Copy the **[metricbeat-playbook.yml](/Ansible/meticbeat-playbook.yml)** to /etc/ansible/roles
 
 Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ansible
 
