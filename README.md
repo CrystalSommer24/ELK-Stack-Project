@@ -24,7 +24,7 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly available, in addition to restricting incoming traffic to the network. 
 - Load Balancers can prevent DDoS attacks by managing the flow of traffic ensuring that servers don’t get overwhelmed. 
 
-- The Jump-box is used to create a controlled access point that is only avaiable to system administrators which allows them to access the network while keeping it hidden from the public.
+- A Jump-box is used to create a controlled access point that is only avaiable to system administrators which allows them to access the network while keeping it hidden from the public.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to systems logs and metrics.
 - Filebeat is utilized to monitor log files and log events. 
@@ -47,7 +47,7 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address:
 - Administrator’s IP address
 
-- The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its interanl IP address of 10.0.0.4. 
+The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its interanl IP address of 10.0.0.4. 
 
 A summary of the access policies in place can be found in the table below.
 
@@ -69,7 +69,7 @@ The playbook implements the following tasks: [.yml_Playbook](/Ansible)
 - Install python-3-pip
 - Install Docker module
 - Increase virtual memory 
-- Download and launch a docker elk container
+- Download and launch a docker ELK container
 - Enable service docker on boot so that docker starts everytime the system is started
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
@@ -131,28 +131,48 @@ Now that the /etc/ansible/hosts file has been updated the playbook can be run.
 Use the command:
  - ansible-playbook install-elk.yml
  
-After running the playbook SSH from your Ansible container to the ELK machine.
+After running the playbook, SSH from your Ansible container to the ELK machine.
 
 From there run the following command to check that seb/elk:761 is running.
 - docker ps 
+
 - The result should be similar to the image below:
 
  ![image](Images/docker_ps_ss.PNG)
 - Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. 
 
-To run Filebeat Playbook:
+To run the Filebeat Playbook:
 
-- Edit the [filebeat-config.yml](/Ansible) file in /etc/ansible
+Copy the [filebeat-playbook.yml](/Ansible) to /etc/ansible/roles
+
+Copy the [filebeat-config.yml](/Ansible) to /etc/ansible/
+
+To edit the filebeat-config.yml file run:
 - nano /etc/ansible filebeat-config.yml
 - Use Ctrl + w to move to line #1106 then replace the IP address with your ELK machines IP
 - Move to line #1806 and insert your ELK IP address there as well
-- Use the command ansible-playbook filebeat-playbook.yml to run the playbook
-- Navigate to the Filebeat installation page
 
-To run Metricbeat Playbook:
-- Edit the [metricbeat-config.yml](/Ansible)
+To run the playbook use: 
+- ansible-playbook filebeat-playbook.yml
+- Navigate to the Filebeat installation page to check that the playbook ran succcessfully
+
+If it was successful you should see similar results to those shown below:
+![imagae](/Imagaes/Filebest_kb_SS.PNG)
+
+To run the Metricbeat Playbook:
+
+Copy the [metricbeat-playbook.yml](/Ansible) to /etc/ansible/roles
+
+Copy the [metricbeat-config.yml](/Ansible) to /etc/ansible
+
+To edit the metricbeat-config.yml file run:
 - nano /etc/ansible metricbeat-config.yml
 - Use Ctrl + w to move to line #62 then replace the IP address with your ELK machines IP
 - Move to line #94 and insert your ELK IP address there as well
-- Use the command ansible-playbook metricbeat-playbook.yml to run the playbook
-- Navigate to the Metricbeat installation page
+
+To run the playbook use: 
+- ansible-playbook metricbeat-playbook.yml
+- Navigate to the Metricbeat installation page- Navigate to the Filebeat installation page to check that the playbook ran succcessfully
+
+If it was successful you should see similar results to those shown below:
+![imagae](/Imagaes/Metricbeat_kb_SS.PNG)
