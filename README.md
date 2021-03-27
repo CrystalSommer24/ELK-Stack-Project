@@ -97,23 +97,22 @@ SSH into the control node and follow the steps below:
 
 **To install ELK:**
 
-Copy the **[install-elk.yml](/Ansible/install-elk.yml)** file to /etc/ansible/roles
+- Copy the **[install-elk.yml](/Ansible/install-elk.yml)** file to /etc/ansible/roles
 
-Add your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
+- Add your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
 
-Use the following command to edit the file:
+- Use the following command to edit the file:
 
    `nano /etc/ansible/hosts`
 
-Update the file so that your VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet, add it under the [webservers] group.
+- Update the file so that your VM’s IP address is listed in the [elk] group. If the [elk] group doesn’t exist yet, add it under the [webservers] group.
 
 The IP address should be followed by: 
 
 ansible_python_interpreter=/usr/bin/python3   (be sure there is a space between this and the IP)
 
 Example:
-
-/etc/ansible/hosts
+-/etc/ansible/hosts
 ```[webservers]
 
 10.0.0.4 ansible_python_interpreter=/usr/bin/python3
@@ -128,13 +127,13 @@ Example:
 ```
 Now that the /etc/ansible/hosts file has been updated you can run the playbook. 
 
-Use the command:
+- Use the command:
 
    `ansible-playbook install-elk.yml`
  
 After running the playbook, SSH from your Ansible container to the ELK machine.
 
-From there run the following command to check that seb/elk:761 is running.
+- From there run the following command to check that seb/elk:761 is running:
 
    `docker ps` 
 
@@ -145,11 +144,11 @@ The result should be similar to the image below:
 
 ***To run the Filebeat Playbook:***
 
-Copy the **[filebeat-playbook.yml](/Ansible/filebeat-playbook.yml)** to /etc/ansible/roles
+- Copy the **[filebeat-playbook.yml](/Ansible/filebeat-playbook.yml)** to /etc/ansible/roles
 
-Copy the **[filebeat-config.yml](/Ansible/filebeat-config.yml)** to /etc/ansible/
+- Copy the **[filebeat-config.yml](/Ansible/filebeat-config.yml)** to /etc/ansible/
 
-To edit the filebeat-config.yml file run:
+- To edit the filebeat-config.yml file run:
 
    `nano /etc/ansible filebeat-config.yml`
 - Use Ctrl + w to move to line #1106
@@ -160,7 +159,7 @@ To run the playbook use:
 
    `ansible-playbook filebeat-playbook.yml`
 
-- To check that the playbook ran successfully navigate to http://<ELK.VM.External.IP>:5601/app/kibana. You can search for filebeat-* in the Dashboard
+- You can check that the playbook ran successfully by navigating to http://<ELK.VM.External.IP>:5601/app/kibana and searching for metricbeat-* in the Dashboard
 
 If it was successful you should see similar results to those shown here: [Filebeat Kibana Dahsboard](/Images/Filebeat_kb_SS.png)
 
@@ -181,7 +180,7 @@ To run the playbook use:
 
    `ansible-playbook metricbeat-playbook.yml`
 
-- To check that the playbook ran successfully navigate to http://<ELK.VM.External.IP>:5601/app/kibana. You can search for metricbeat-* in the Dashboard
+- You can check that the playbook ran successfully by navigating to http://<ELK.VM.External.IP>:5601/app/kibana and searching for metricbeat-* in the Dashboard
 
 If it was successful you should see similar results to those shown here: [Metricbeat Kibana Dashboard](/Images/Metricbeat_kb_SS.png)
 
