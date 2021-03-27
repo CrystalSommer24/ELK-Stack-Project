@@ -160,9 +160,9 @@ To run the playbook use:
 
    `ansible-playbook filebeat-playbook.yml`
 
-- You can check that the playbook ran successfully by navigating to http://<ELK.VM.External.IP>:5601/app/kibana and searching for metricbeat-* in the Dashboard
+- You can check that the playbook ran successfully by navigating to http://<ELK.VM.External.IP>:5601/app/kibana and searching for filebeat-* in the Dashboard
 
-If it was successful you should see similar results to those shown here: [Filebeat Kibana Dahsboard](/Images/Filebeat_kb_SS.png)
+If it was successful you should see similar results to those shown here: [Filebeat Kibana Dashboard](/Images/Filebeat_kb_SS.png)
 
 **To run the Metricbeat Playbook:**
 
