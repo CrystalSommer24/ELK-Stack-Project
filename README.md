@@ -14,7 +14,7 @@ This document contains the following details:
 - ELK Configuration
   - Beats in Use
   - Machines Being Monitored
-- How to Use the Ansible Build
+- How to Use the Ansible build
 
 
 ### Description of the Topology
@@ -151,12 +151,8 @@ To run Filebeat Playbook:
 
 To run Metricbeat Playbook:
 - Edit the [metricbeat-config.yml](/Ansible)
-
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- nano /etc/ansible metricbeat-config.yml
+- Use Ctrl + w to move to line #62 then replace the IP address with your ELK machines IP
+- Move to line #94 and insert your ELK IP address there as well
+- Use the command ansible-playbook metricbeat-playbook.yml to run the playbook
+- Navigate to the Metricbeat installation page
