@@ -112,7 +112,8 @@ The IP address should be followed by:
 ansible_python_interpreter=/usr/bin/python3   (be sure there is a space between this and the IP)
 
 Example:
--/etc/ansible/hosts
+
+/etc/ansible/hosts
 ```[webservers]
 
 10.0.0.4 ansible_python_interpreter=/usr/bin/python3
