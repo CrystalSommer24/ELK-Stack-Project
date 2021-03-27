@@ -99,7 +99,7 @@ To install ELK:
 
 Copy the [install-elk.yml](/Ansible) file to /etc/ansible/roles
 
-Add the your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
+Add your VM’s IP address to the /etc/ansible/hosts file. This allows Ansible to run the playbook on a specific machine. 
 
 Use the following command to edit the file:
 - nano /etc/ansible/hosts
