@@ -94,22 +94,7 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the [.yml](/Ansible) file to /etc/ansible
-- Update /etc/hosts to enable the playbook to run on the correct machines run the following commands:
-  - sudo /etc/hosts
-  - sudo nano hosts
-- Make the following changes to the hosts file
-[webservers]
 
-10.0.0.5 ansible_python_interpreter=/usr/bin/python3
-
-10.0.0.6 ansible_python_interpreter=/usr/bin/python3 
-
-10.0.0.7 ansible_python_interpreter=/usr/bin/python3 
-
-[elk]
-
-10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
