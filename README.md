@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![image](Images/Project_1_Diagram.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
   - [Playbooks](/Ansible)
 
@@ -21,18 +21,15 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly available, in addition to restricting incoming traffic to the network.
-
 Load balancing ensures that the application will be highly available, in addition to restricting incoming access to the network. They also prevent DDoS attacks by managing the flow of traffic ensuring that servers don’t get overwhelmed. 
 
 Using a Jump-box to create a controlled access point allows administrators access to the network while keeping it hidden from the public.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems and system metrics.
-- Filebeat us utilized to monitor log files. Its creators describe it as being used for "forwarding and centralizing log data." Once that data has been collected it can then be parsed and visualized for easy interpretation.
+- Filebeat is utilized to monitor log files. Its creators describe it as being used for "forwarding and centralizing log data." Once that data has been collected it can then be parsed and visualized for easy interpretation.
 - Metricbeat is useful in capturing system and service statistics. It periodically collects metrics from the OS and active services on the server to help users keep track of the system’s workings whether it be CPU, memory, or applications.
 
-The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+The configuration details of each machine may be found below:
 
 |   Name   |     Function     | IP Address |   Operating System   |
 |:--------:|:----------------:|:----------:|:--------------------:|
@@ -47,10 +44,9 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Administrator’s (Rey) personal IP address
+- Administrator’s IP address
 
-
-Machines within the network can only be accessed by Jump-Box.
+The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its interanl IP address of 10.0.0.4. 
 - 
 
 A summary of the access policies in place can be found in the table below.
@@ -65,8 +61,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- Automation not only reduces the chance of errors but also allows multiple machines to be configured at once which is vastly more efficient than manually configuring each machine individually. In addition, automation
+Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because automation not only reduces the chance of errors but also allows multiple machines to be configured at once which is vastly more efficient than manually configuring each machine individually. In addition, the existing files are easy to edit should changes or updates need to be made in the future. 
 
 The playbook implements the following tasks:
 - Install docker.io
@@ -74,9 +69,7 @@ The playbook implements the following tasks:
 - Install Docker module
 - Increase virtual memory 
 - Download and launch a docker elk container
-- Enable service docker on boot
-
-
+- Enable service docker on boot so that docker starts everytime the system is started
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -91,7 +84,8 @@ We have installed the following Beats on these machines:
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat is a log shipper used to tail log files such as, audit logs, server logs, slow logs and deprecation logs. The log data can then either be forwarded to Logstash for more advanced processing or sent directly to Elasticsearch for indexing.
+- Metricbeat functions much like Filebeat but instead of log files, Metricbeat ships host metrics such as CPU usage and memory statistics. In environemtns using containers Metricbeat can also be used to measure container performance metrics. 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
