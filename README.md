@@ -47,8 +47,7 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - Administrator’s IP address
 
-The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its interanl IP address of 10.0.0.4. 
-- 
+- The only way machines on the network can be accessed is through the Jump-Box which connects to the servers, including the ELK server, via its interanl IP address of 10.0.0.4. 
 
 A summary of the access policies in place can be found in the table below.
 
