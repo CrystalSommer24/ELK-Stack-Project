@@ -165,7 +165,7 @@ If it was successful you should see similar results to those shown here: [Filebe
 
 To run the Metricbeat Playbook:
 
-Copy the **[metricbeat-playbook.yml](/Ansible/meticbeat-playbook.yml)** to /etc/ansible/roles
+Copy the **[metricbeat-playbook.yml](/Ansible/metricbeat-playbook.yml)** to /etc/ansible/roles
 
 Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ansible
 
