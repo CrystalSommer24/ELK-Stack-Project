@@ -122,9 +122,9 @@ Example:
 
 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
 
- [elk]
+[elk]
  
- 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 ```
 Now that the /etc/ansible/hosts file has been updated you can run the playbook. 
 
@@ -149,7 +149,7 @@ The result should be similar to the image below:
 
 - Copy the **[filebeat-config.yml](/Ansible/filebeat-config.yml)** to /etc/ansible/
 
-- To edit the filebeat-config.yml file run:
+- The filebeat-config.yml needs to be edited with your ELk machines IP address. To do that run the following command:
 
    `nano /etc/ansible filebeat-config.yml`
 - Use Ctrl + w to move to line #1106
@@ -164,13 +164,13 @@ To run the playbook use:
 
 If it was successful you should see similar results to those shown here: [Filebeat Kibana Dahsboard](/Images/Filebeat_kb_SS.png)
 
-To run the Metricbeat Playbook:
+**To run the Metricbeat Playbook:**
 
 Copy the **[metricbeat-playbook.yml](/Ansible/metricbeat-playbook.yml)** to /etc/ansible/roles
 
 Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ansible
 
-To edit the metricbeat-config.yml file run:
+The metricbeat-config.yml needs to be edited with your ELk machines IP address. To do that run the following command:
 
    `nano /etc/ansible metricbeat-config.yml`
 - Use Ctrl + w to move to line #62
