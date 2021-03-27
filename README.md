@@ -166,9 +166,9 @@ If it was successful you should see similar results to those shown here: [Filebe
 
 **To run the Metricbeat Playbook:**
 
-Copy the **[metricbeat-playbook.yml](/Ansible/metricbeat-playbook.yml)** to /etc/ansible/roles
+- Copy the **[metricbeat-playbook.yml](/Ansible/metricbeat-playbook.yml)** to /etc/ansible/roles
 
-Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ansible
+- Copy the **[metricbeat-config.yml](/Ansible/metricbeat-config.yml)** to /etc/ansible
 
 The metricbeat-config.yml needs to be edited with your ELK machines IP address. To do that run the following command:
 
